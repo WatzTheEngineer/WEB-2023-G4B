@@ -85,6 +85,17 @@ class FirstClass
         return $keys;
     }
 
+    function elementOfFirstArrayWhereNotInThe2nd (array $array1, array $array2): array
+    {
+        $array3 = array();
+        foreach ($array1 as $key => $value) {
+            if (!(in_array($value, $array2))) {
+                $array3[] = $value;
+            }
+        }
+        return $array3;
+    }
+
 }
 
 $x = new FirstClass(); //Créer un objet basé sur la classe FirstClass
@@ -198,4 +209,34 @@ $monTableau = array(
 $resultat = $x->reverseSortedKeys($monTableau);
 echo "tableau rangé dans l'odre c-b-a : <br>";
 var_dump($resultat);
+echo "<br>=======<br>";
+$cc = $x->elementOfFirstArrayWhereNotInThe2nd(["a","b","c"], ["a","c"] );
+echo("éléments du premier tableau qui ne sont pas dans le second : " . print_r($cc, true));
+echo "<br>=======<br>";
+
+// Fonction personnalisée pour convertir une chaîne en title case
+function convertirEnTitleCase($valeur) {
+    // Vérifier si la valeur est une chaîne
+    if (is_string($valeur)) {
+        // Convertir la chaîne en title case
+        return ucwords(strtolower($valeur));
+    } else {
+        // Si ce n'est pas une chaîne, retourner la valeur d'origine
+        return $valeur;
+    }
+}
+
+// Tableau d'exemple
+$tableauOriginal = array('pomme', 'banane', 'cerise', 'poire', 'datte', 'KIWI');
+
+// Appliquer la fonction personnalisée au tableau
+$tableauModifie = array_map('convertirEnTitleCase', $tableauOriginal);
+
+// Afficher le tableau original et modifié
+echo "Tableau d'origine : ";
+print_r($tableauOriginal);
+
+echo "Tableau modifié (Title Case) : ";
+print_r($tableauModifie);
+
 echo "<br>=======<br>";
