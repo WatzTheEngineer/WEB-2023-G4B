@@ -3,13 +3,15 @@
 require "SomeInterface.php";
 require "SomeAbstractClass.php";
 
-class SomeClass extends SomeAbstractClass implements SomeInterface{
+#inheritance from another class, abstract class, and implementing an interface
+class SomeClass extends SomeAbstractClass implements SomeInterface {
+
     public const CONST = 5;
     public $classVariable = 15;
 
-    public function copie_google(){
+    public function copyGoogle(){
         $url = "http://www.google.com";
-        $ficSortie = "google_content.html";
+        $ficSortie = "../google_content.html";
         try {
             $contenuePage = file_get_contents($url);
             if ($contenuePage !== false) {
@@ -21,8 +23,6 @@ class SomeClass extends SomeAbstractClass implements SomeInterface{
             echo "Erreur: " . $e->getMessage();
         }
     }
-
-
 
     public function generateImage() {
 
@@ -46,7 +46,7 @@ class SomeClass extends SomeAbstractClass implements SomeInterface{
         // Add text
         $textColor = imagecolorallocate($background, 255, 255, 255);
         $text = "I LOVE PHP AND 3.01 PW";
-        $textFont = 'police.ttf'; // Change the font path to the appropriate font on your system
+        $textFont = '../police.ttf'; // Change the font path to the appropriate font on your system
 
         // Define the position to center the text
         $textX = $imageWidth / 2 - 120;
@@ -71,10 +71,10 @@ class SomeClass extends SomeAbstractClass implements SomeInterface{
 
         //$info = [$_SERVER['HTTP_HOST'], $_SERVER['SERVER_ADDR'], $_SERVER['REMOTE_ADDR'], $_SERVER['REQUEST_METHOD']];
         $info = array(
-            'host' => $_SERVER['HTTP_HOST'],
-            'server_ip' => $_SERVER['SERVER_ADDR'],
-            'client_ip' => $_SERVER['REMOTE_ADDR'],
-            'request_method' => $_SERVER['REQUEST_METHOD']
+            'host' => isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null,
+            'server_ip' => isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : null,
+            'client_ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null,
+            'request_method' => isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : null
         );
 
         return $info;
@@ -150,4 +150,7 @@ class SomeClass extends SomeAbstractClass implements SomeInterface{
         }
     }
 
+    public function getType($param) {
+        return gettype($param);
+    }
 }
