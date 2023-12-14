@@ -1,0 +1,12 @@
+{
+    "name": "vendor/name",
+    "description": "description",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Name\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    }
+}
