@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,14 @@
 <body>
 <?php
 
-    require "../../SomeClass.php";
+    $a = 15;
 
-    $class= new SomeClass();
-    $class->copyGoogle();
-
-    echo("content writen into google content.html");
+    echo "<b>While :</b> <br><br>";
+    // Boucle while
+    while ($a < 20) {
+        echo "a est : $a <br>";
+        $a++;
+    }
 
     ?>
 </body>

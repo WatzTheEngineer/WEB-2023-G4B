@@ -9,12 +9,12 @@
 <body>
 <?php
 
-    require "../../SomeClass.php";
 
-    $class= new SomeClass();
-    $class->copyGoogle();
-
-    echo("content writen into google content.html");
+    echo "<b>For :</b> <br><br>";
+    // Boucle for pour afficher les valeurs de 0 à 4
+    for ($i = 0; $i < 5; $i++) {
+        echo "- La valeur est : $i <br>";
+    }
 
     ?>
 </body>

@@ -57,10 +57,9 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         imagejpeg($background, $imagePath);
 
         // Output the image to the browser
-        header('Content-Type: image/jpeg');
-        imagejpeg($background);
+        echo "<img style='display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;' src=" . $imagePath . ">";
+        echo "<br>This image was saved on the disk";
 
-        // Free up memory
         imagedestroy($background);
     }
 

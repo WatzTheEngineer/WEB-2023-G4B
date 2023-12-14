@@ -9,12 +9,15 @@
 <body>
 <?php
 
-    require "../../SomeClass.php";
+    $b = 15;
 
-    $class= new SomeClass();
-    $class->copyGoogle();
-
-    echo("content writen into google content.html");
+    echo "<b>Do-While :</b> <br><br>";
+    // Boucle do-while
+    do {
+        echo "b est : $b <br>";
+        $b--;
+    } while ($b > 10);
+    echo "b est : $b <br>";
 
     ?>
 </body>
