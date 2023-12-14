@@ -1,6 +1,6 @@
 #S01E01
 
-
+???
 
 #S01E02
 
@@ -38,3 +38,10 @@ Exemples :
 - php vendor/bin/phpstan analyse --level max iut-pw-symphony
 
 #S01E05
+
+installs :
+- in "/common/S01E04-05" type : "composer require --dev phpunit/phpunit"
+
+to run tests :
+- go to "/common/S01E04-05"
+- phpunit

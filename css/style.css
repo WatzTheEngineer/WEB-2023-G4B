@@ -10,7 +10,6 @@ a {
     text-decoration: none;
     margin: auto;
     margin-top: 5px;
-
     padding: 30px;
 }
 
@@ -20,4 +19,37 @@ a:hover {
 
 body {
     background-color: #384454;
+    color: white;
+    font-size: large;
+    width: calc(99% - 50px);
+    text-align: center;
+    padding: 25px;
+}
+
+table {
+    background-color: #D4D3DC;
+    margin: auto;
+    padding: 0px;
+}
+
+td, th {
+    padding: 10px;
+    background-color: #317AC1;
+    border: solid 2px #D4D3DC;
+    width: 100px;
+}
+
+td:hover, th:hover {
+    border: solid 2px #384454;
+}
+
+button {
+    background-color: #317AC1;
+    border-radius: 50px;
+    padding: 10px;
+    width: 250px;
+    border-color: #D4D3DC;
+    color: #D4D3DC;
+    font-size: 15px;
+    font-weight: 600;
 }

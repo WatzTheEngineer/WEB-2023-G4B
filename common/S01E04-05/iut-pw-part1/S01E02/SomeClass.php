@@ -11,7 +11,7 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
 
     public function copyGoogle(){
         $url = "http://www.google.com";
-        $ficSortie = "../../Generated/google_content.html";
+        $ficSortie = "../google_content.html";
         try {
             $contenuePage = file_get_contents($url);
             if ($contenuePage !== false) {
@@ -46,7 +46,7 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         // Add text
         $textColor = imagecolorallocate($background, 255, 255, 255);
         $text = "I LOVE PHP AND 3.01 PW";
-        $textFont = '../../Util/police.ttf'; // Change the font path to the appropriate font on your system
+        $textFont = '../police.ttf'; // Change the font path to the appropriate font on your system
 
         // Define the position to center the text
         $textX = $imageWidth / 2 - 120;
@@ -56,7 +56,7 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         imagettftext($background, 18, 0, $textX, $textY, $textColor, $textFont, $text);
 
         // Save the image to disk
-        $imagePath = '../../Generated/output_image.jpg';
+        $imagePath = 'output_image.jpg';
         imagejpeg($background, $imagePath);
 
         // Output the image to the browser
@@ -82,13 +82,9 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
 
 
     public function getMemory() {
-        $result = array(
-            'memory_used' => memory_get_usage(),
-            'memory_limit' => ini_get('memory_limit')
-        );
-        return $result;
+        echo "Mémoire utilisé : " . memory_get_usage() . "<br>";
+        echo "Limite actuelle de la mémoire : " . ini_get('memory_limit') . "<br>";
     }
-
     public function isVowelSwitch($letter) {
         switch ($letter) {
             case 'a':
@@ -96,41 +92,34 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
             case 'i':
             case 'o':
             case 'u':
-                return true;
+                echo "The letter $letter is a vowel.";
+                break;
             default:
-                return false;
+                echo "The letter $letter is a consonant.";
         }
     }
 
     public function whileLoop($number) {
-
-        $word = "";
         $i = 0;
-
-        while (true) {
-            $word = $word . $i . "<br>";
+        while ($i <= $number) {
+            echo $i . "<br>";
             $i++;
-            if ($i >= $number) break;
+            if ($i == 5) {
+                break;
+            }
         }
-
-        return $word;
     }
 
     public function doLoop($array) {
-
-        $result = "";
         $i = 0;
-
         do {
             if ($array[$i] % 2 == 0) {
                 $i++;
                 continue;
             }
-            $result = $result . $array[$i] . "<br>";
+            echo $array[$i] . "<br>";
             $i++;
         } while ($i < count($array));
-
-        return $result;
     }
 
     public function afficherHeader($url) {
@@ -146,16 +135,16 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         return 'null';
     }
 
-    public function connectDBWithPDOAndCreateTable() {
+    public function connectDBWithPDOAndCreateTable($host, $dbname, $user, $password) {
         try {
-            $pdo = new PDO('mysql:host=localhost; dbname=testSAE', 'root', 'root');
+            $dsn = "mysql:host=$host;dbname=$dbname";
+            $pdo = new PDO($dsn, $user, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "SELECT * FROM PIECE";
+            $sql = "INSERT INTO PIECE VALUES (6, 'Poignee', 10, 7, 3).";
             $pdo->exec($sql);
 
-            echo "Connexion et sélection de la table réussies!";
-            echo $pdo;
+            echo "Connexion et création de la table réussies!";
         } catch (PDOException $e) {
             die("Erreur: " . $e->getMessage());
         }
@@ -163,25 +152,5 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
 
     public function getType($param) {
         return gettype($param);
-    }
-
-    function sortTable(array $table, string $column, string $order) : array {
-
-        // Sorting logic here
-        usort($table, function ($a, $b) use ($column, $order) {
-            if ($column === 'age') {
-                if ($order === 'asc') {
-                    return $a[$column] <=> $b[$column];
-                } else if ($order === 'desc') {
-                    return $b[$column] <=> $a[$column];
-                } else {
-                    throw new InvalidArgumentException('Invalid sort order');
-                }
-            } else {
-                throw new InvalidArgumentException('Invalid column');
-            }
-        });
-
-        return $table;
     }
 }

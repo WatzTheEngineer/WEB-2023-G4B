@@ -24,11 +24,10 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         }
     }
 
-    public function generateImage() {
+    public function generateImage($police, $imagePath) {
 
         //in the php.ini file uncomment extension:gd
         //dowload an police name police.ttl in the folder
-
         $imageWidth = 400;
         $imageHeight = 200;
 
@@ -46,17 +45,15 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         // Add text
         $textColor = imagecolorallocate($background, 255, 255, 255);
         $text = "I LOVE PHP AND 3.01 PW";
-        $textFont = '../../Util/police.ttf'; // Change the font path to the appropriate font on your system
 
         // Define the position to center the text
         $textX = $imageWidth / 2 - 120;
         $textY = $imageHeight / 2 + 20;
 
         // Add text to the image
-        imagettftext($background, 18, 0, $textX, $textY, $textColor, $textFont, $text);
+        imagettftext($background, 18, 0, $textX, $textY, $textColor, $police, $text);
 
         // Save the image to disk
-        $imagePath = '../../Generated/output_image.jpg';
         imagejpeg($background, $imagePath);
 
         // Output the image to the browser
@@ -148,14 +145,44 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
 
     public function connectDBWithPDOAndCreateTable() {
         try {
-            $pdo = new PDO('mysql:host=localhost; dbname=testSAE', 'root', 'root');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = new PDO('mysql:host=localhost; dbname=testSAE;charset=utf8;port=3307', 'root', 'root', [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+            ]);
+
+            $sql = "DROP TABLE IF EXISTS PIECE";
+            $statement = $pdo->query($sql);
+
+            $sql = "CREATE TABLE IF NOT EXISTS PIECE(
+                idPiece INT NOT NULL PRIMARY KEY,
+                nomPiece VARCHAR(15) NOT NULL,
+                poidTotal INT NOT NULL,
+                poidSansCarotte INT NOT NULL,
+                poidCarotte INT NOT NULL
+            )";
+            $statement = $pdo->query($sql);
+
+            echo "Table crée<br>";
+
+            $sql = "INSERT INTO PIECE VALUES (1, 'Prise', 5, 3, 2), (2, 'Interrupteur', 6, 4, 2), (3, 'Poussoir', 7,4,3), (4, 'Disjoncteur', 8,5,3), (5, 'Detecteur', 10,5,5)";
+            $statement = $pdo->query($sql);
+
+            echo "Valeurs insérées<br>";
 
             $sql = "SELECT * FROM PIECE";
-            $pdo->exec($sql);
+            $statement = $pdo->query($sql);
 
-            echo "Connexion et sélection de la table réussies!";
-            echo $pdo;
+            echo "Selection des valeurs faite<br>";
+
+            $result = "";
+
+            // Fetch and print the results
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                $result = $result . "Piece ID: " . $row['idPiece'] . ", Name: " . $row['nomPiece'] . "<br>";
+            }
+
+        return $result;
+
         } catch (PDOException $e) {
             die("Erreur: " . $e->getMessage());
         }
@@ -185,3 +212,4 @@ class SomeClass extends SomeAbstractClass implements SomeInterface {
         return $table;
     }
 }
+
