@@ -1,0 +1,23 @@
+a {
+    color: white;
+    background-color: #317AC1;
+    border: solid 3px #317AC1;
+    display: block;
+    text-align: center;
+    width: 75%;
+    border-radius: 20px;
+    padding: 5px;
+    text-decoration: none;
+    margin: auto;
+    margin-top: 5px;
+
+    padding: 30px;
+}
+
+a:hover {
+    border: solid 3px #D4D3DC;
+}
+
+body {
+    background-color: #384454;
+}
