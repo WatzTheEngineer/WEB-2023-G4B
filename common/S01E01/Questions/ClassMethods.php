@@ -9,7 +9,9 @@
 <body>
     <?php
 
-        require "../Classes/FirstClass.php";
+    use LP\S01E01\FirstClass;
+
+    require "../Classes/FirstClass.php";
 
         $x = new FirstClass(); //Créer un objet basé sur la classe FirstClass
 
