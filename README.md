@@ -30,14 +30,14 @@ php -S localhost:8000 -n -c "./php_ini/windows/php.ini"
 ## S01E04
 
 ### Laravel Setup
-Go to `iut-pw-symphony-laravel` and type:
+Go to `iut-pw-laravel` and type:
 
 ```sh
 php artisan serve
 ```
 
 ### Symphony Setup
-Go to `iut-pw-symphony-symphony/public` and type:
+Go to `iut-pw-symphony/public` and type:
 
 ```sh
 php -S 127.0.0.1:8000
