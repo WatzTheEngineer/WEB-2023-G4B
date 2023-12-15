@@ -30,21 +30,21 @@ php -S localhost:8000 -n -c "./php_ini/windows/php.ini"
 ## S01E04
 
 ### Laravel Setup
-Go to `iut-pw-laravel` and type:
+Go to `/common/S01E04-05/iut-pw-symphony-laravel/` and type:
 
 ```sh
 php artisan serve
 ```
 
 ### Symphony Setup
-Go to `iut-pw-symphony/public` and type:
+Go to `/common/S01E04-05/iut-pw-symphony-symphony/public/` and type:
 
 ```sh
 php -S 127.0.0.1:8000
 ```
 
 ### PHPStan Analysis
-To scan files for errors, go to `cmd` and type:
+To scan files for errors, go to `/common/S01E04-05/` and type:
 
 ```sh
 php vendor/bin/phpstan analyse --level <file_to_scan>
