@@ -1,6 +1,6 @@
 <?php
 
-namespace LP\S01E01;
+namespace S01E01;
 
 use Exception;
 

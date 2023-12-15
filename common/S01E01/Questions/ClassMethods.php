@@ -9,7 +9,7 @@
 <body>
     <?php
 
-    use LP\S01E01\FirstClass;
+    use S01E01\FirstClass;
 
     require "../Classes/FirstClass.php";
 
