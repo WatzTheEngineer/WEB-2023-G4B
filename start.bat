@@ -1,0 +1,1 @@
+php -S localhost:8000 -n -c "php_ini/windows/php.ini"
