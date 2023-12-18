@@ -96,5 +96,33 @@ class FirstClass
         return $array3;
     }
 
+    function TitleCaseElements($tableauOriginal) {
+        return array_map(function ($valeur) {
+            // Vérifier si la valeur est une chaîne
+            // Convertir la chaîne en title case
+            if (is_string($valeur)) return ucwords(strtolower($valeur));
+            // Si ce n'est pas une chaîne, retourner la valeur d'origine
+            else return $valeur;
+        }, $tableauOriginal);
+    }
+
+    function reverseString($string) {
+        $reverseString = fn($input) => implode('', array_reverse(preg_split('//u', $input)));
+        return $reverseString($string);
+    }
+
+    function isParameterEmpty($param) {
+        return empty($param) ? 'Parametre vide' : "Parametre n'est pas vide";
+    }
+
+    /**
+    * @throws Exception
+    */
+    function valueMustBeInfThan3($number): void
+    {
+        if ($number >=3){
+            throw new Exception("La valeur doit être inférieure ou égale à 3");
+        }
+    }
 }
 

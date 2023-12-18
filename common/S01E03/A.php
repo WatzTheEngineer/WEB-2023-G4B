@@ -10,7 +10,7 @@ class A implements I, I2
 
 	private $name="A";
 	public $A;
-    
+
 	function __construct($A)
 	{
 		$this->A = $A;

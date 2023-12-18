@@ -23,12 +23,18 @@ spl_autoload_register(function ($namespace) {
 });
 
 $la_classe_b = new B('B');
-echo ("<br>".$la_classe_b);
 echo("<br>");
+
+echo ($la_classe_b);
+echo("<br>");
+
 echo(B::helloMethod());
 echo("<br>");
 
 echo ((new A('A'))->hello());
+echo("<br>");
 
 $la_classe_a = new A('A');
+echo("<br>");
+
 $la_classe_a->displayCountTo10();
