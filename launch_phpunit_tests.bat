@@ -1,2 +1,3 @@
 cd ".\common\S01E04-05"
-phpunit
+vendor/bin/phpunit
+pause

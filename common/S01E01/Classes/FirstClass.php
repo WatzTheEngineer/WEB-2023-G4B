@@ -3,6 +3,7 @@
 namespace S01E01;
 
 use Exception;
+use Countable;
 
 class FirstClass
 {
@@ -123,6 +124,14 @@ class FirstClass
         if ($number >=3){
             throw new Exception("La valeur doit être inférieure ou égale à 3");
         }
+    }
+
+    function count($var): int {
+        if (is_int($var)) return $var;
+        elseif (is_string($var)) return strlen($var);
+        elseif (is_array($var)) return count($var);
+        elseif ($var instanceof Countable) return $var->count();
+        else return 0;
     }
 }
 
